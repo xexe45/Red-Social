@@ -1,0 +1,105 @@
+<header>
+    <nav>
+        <div class="container navegacion">
+            <div class="row">
+                <div class="col-md-6 titulo">
+                    <h1 class="title">RedSocial</h1>
+                </div>
+                <div class="col-md-6 inputs">
+                    <form ngNativeValidate #f="ngForm" (ngSubmit)="login(f)">
+                        <div class="row">
+
+                            <div class="col-md-4 input">
+                                <label class="label" for="">Correo Electrónico</label>
+                                <input type="email" ngModel name="email">
+                            </div>
+                            <div class="col-md-4 input">
+                                <label class="label" for="">Contraseña</label>
+                                <input type="password" ngModel name="password">
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="boton">Iniciar Sesión</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</header>
+<section class="registro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 entrada">
+                <p class="parrafo">Red Social te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</p>
+                <img src="assets/imgs/facebook.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-6 cuenta">
+                <h3 class="titulo">Crea una Cuenta</h3>
+                <p class="parrafo">Es gratis y lo será siempre.</p>
+                <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrar()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" formControlName="name" name="name" class="form-control" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" formControlName="lastname" name="lastname" class="form-control" placeholder="Apellidos">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="email" formControlName="email" name="email" class="form-control" placeholder="Correo Electrónico">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password" formControlName="password" name="password" class="form-control" placeholder="Contraseña Nueva">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="date">Fecha de Nacimiento</label>
+                                <input type="date" formControlName="date" name="date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" formControlName="sex" id="customRadioInline1" name="sex" value="mujer" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline1">Mujer</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" formControlName="sex" id="customRadioInline2" name="sex" value="hombre" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline2">Hombre</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 condiciones">
+                            <p class="condicion">Al hacer clic en "Crear cuenta", aceptas las Condiciones y confirmas que leíste nuestra Política de datos, incluido el uso de cookies. Es posible que recibas notificaciones por SMS de Facebook, que puedes desactivar en cualquier
+                                momento.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="boton">Crear cuenta</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,129 @@
+<div class="row justify-content-center publicar">
+    <div class="col-md-5">
+        <div class="card tarjeta">
+            <div class="card-header cabecera">
+                <i class="fa fa-pencil"></i> Publicación
+            </div>
+            <div class="card-body cuerpo">
+                <textarea class="form-control" [(ngModel)]="post" (keyup.enter)="newPost()" name="post" placeholder="¿Qué estás pensando?" cols="30" rows="2"></textarea>
+                <br>
+                <input [hidden]=true type="file" accept="image/*" #file (change)="verImagen($event.target.files[0])">
+                <img *ngIf="img" [src]="img" class="img-fluid" alt="">
+            </div>
+            <div class="card-footer text-muted pie">
+                <button type="button" (click)="file.click()" class="btn btn-light"><i class="fa fa-picture-o foto"></i> Foto</button>
+                <button type="button" class="btn btn-light"><i class="fa fa-smile-o feliz"></i> Sentimiento</button>
+            </div>
+        </div>
+        <div class="card publicacion" *ngFor="let post of posts">
+            <div class="card-body">
+                <div class="row cabecera">
+                    <div class="col-md-2 imagen-perfil">
+                        <img class="img-fluid post-img" [src]="post.user_id.img | imagen" alt="">
+                    </div>
+                    <div class="col-md-8 post-who">
+                        <p><a [routerLink]="['/people',post.user_id.slug]">{{ post.user_id.name }} {{ post.user_id.lastname }}</a></p>
+                        <p class="hace">{{ post.created_at | amTimeAgo}}</p>
+                    </div>
+                    <div class="col-md-2 mypost" *ngIf="post.user_id._id === login.id">
+                        <div class="btn-group" dropdown>
+                            <button dropdownToggle type="button" class="btn btn-light btn-sm dropdown-toggle">...<span class="caret"></span>
+                            </button>
+                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li role="menuitem"><a class="dropdown-item cursor">Editar</a></li>
+                                <li role="menuitem"><a class="dropdown-item cursor" (click)="delete(post._id)">Eliminar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row cuerpo">
+                    <div class="col-md-12">
+                        <p>{{ post.post }}</p>
+                        <img class="img-fluid" *ngIf="post.img" [src]="post.img | imagen:'posts'" alt="">
+                    </div>
+                    <div class="col-md-12">
+                        <span class="facebook"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>{{ post.likes.length}}
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted pie">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button [ngClass]="{'boton-like': likeIt(post)}" (click)="like(post)" type="button" class="btn btn-light">
+                            <i class="fa fa-thumbs-o-up"></i> Me gusta
+                        </button>
+
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn btn-light"><i class="fa fa-comment-o"></i> Comentar</button>
+
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn btn-light"><i class="fa fa-share"></i> Compartir</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row cargar">
+            <div class="col-md-12 cargando">
+                <button type="button" (click)="cargarMas()" class="btn btn-info btn-block"><i class="fa fa-spinner" aria-hidden="true"></i> Cargar más...</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 historias">
+        <div class="card tarjeta">
+            <div class="card-body cuerpo">
+                <h6 class="card-title titulo">Historias</h6>
+                <div class="row historias-users">
+                    <div class="col-md-12">
+                        <a href="">
+                            <div class="row">
+                                <div class="col-md-4 imagen">
+                                    <img class="img-fluid imagen-historia" src="" alt="">
+                                </div>
+                                <div class="col-md-8 texto">
+                                    <a class="user" href="#">Juana Maria Sosa Palacios</a>
+                                    <p class="tiempo">hace una hora</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="row historias-users">
+                    <div class="col-md-12">
+                        <a href="">
+                            <div class="row">
+                                <div class="col-md-4 imagen">
+                                    <img class="img-fluid imagen-historia" src="" alt="">
+                                </div>
+                                <div class="col-md-8 texto">
+                                    <a class="user" href="#">Juana Maria Sosa Palacios</a>
+                                    <p class="tiempo">hace una hora</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="row historias-users">
+                    <div class="col-md-12">
+                        <a href="">
+                            <div class="row">
+                                <div class="col-md-4 imagen">
+                                    <img class="img-fluid imagen-historia" src="" alt="">
+                                </div>
+                                <div class="col-md-8 texto">
+                                    <a class="user" href="#">Juana Maria Sosa Palacios</a>
+                                    <p class="tiempo">hace una hora</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

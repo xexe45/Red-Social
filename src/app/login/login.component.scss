@@ -1,0 +1,75 @@
+$principal: #3b5998;
+$fuente2: #0E3882;
+header {
+    nav {
+        background: $principal;
+        color: #fff;
+        .navegacion {
+            padding: 10px 30px;
+            .titulo {
+                margin-top: 10px;
+            }
+            .inputs {
+                .input {
+                    .label {
+                        font-size: 0.8em;
+                    }
+                }
+                .boton {
+                    margin-top: 30px;
+                    background: #4267B2;
+                    color: #fff;
+                    border: 1px solid #29487D;
+                    font-size: 0.8em;
+                    padding: 4px 8px;
+                    &:hover {
+                        cursor: pointer;
+                        background: #30487a;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.registro {
+    margin-bottom: 20px;
+    .entrada {
+        margin-top: 40px;
+        padding: 0 30px;
+        .parrafo {
+            color: $fuente2;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+    }
+    .cuenta {
+        margin-top: 20px;
+        padding: 0 40px;
+        .titulo {
+            color: $fuente2;
+            font-weight: bold;
+            font-size: 2.2em;
+        }
+        .parrafo {
+            color: $fuente2;
+        }
+        .condiciones {
+            margin-top: 10px;
+            .condicion {
+                font-size: .7em;
+                color: #A4A4A4;
+            }
+        }
+        .boton {
+            margin-top: 10px;
+            background: #609C4D;
+            color: #fff;
+            padding: 5px 40px;
+            font-weight: 500;
+            border-radius: 6px;
+            font-size: 1.2em;
+            border: 1px solid #3B6E22;
+        }
+    }
+}

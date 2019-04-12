@@ -1,0 +1,32 @@
+    $principal: #3b5998;
+    header {
+        nav {
+            background: $principal;
+            .navegacion {
+                padding: 10px;
+                .buscar {
+                    .input {
+                        width: 80%;
+                    }
+                }
+                .enlaces {
+                    .enlace {
+                        display: inline-block;
+                        color: #fff;
+                        padding: 0 10px;
+                        text-decoration: none;
+                        &.icono {
+                            color: #0D1524;
+                        }
+                        &.puntero {
+                            cursor: pointer;
+                        }
+                    }
+                    .imagen {
+                        border-radius: 100%;
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }

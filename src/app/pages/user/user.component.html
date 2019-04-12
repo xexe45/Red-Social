@@ -1,0 +1,99 @@
+<div class="row perfil" *ngIf="user">
+    <div class="col-md-12">
+        <div class="card bg-dark text-white">
+            <img class="card-img" [src]="user.imgfondo | imagen:'fondos'" alt="Card image" height="300">
+
+            <div class="card-img-overlay d-flex align-items-end">
+                <div class="card tarjeta">
+                    <img class="card-img puntero" [src]="user.img | imagen" alt="Card image">
+                </div>
+                <h5 class="card-title titulo">
+                    {{ user.name }} {{ user.lastname }}
+                    <i (click)="openModal2(template2,'profiles')" *ngIf="user._id === login.id" class="fa fa-pencil puntero"></i>
+                    <i (click)="openModal2(template2,'fondos')" *ngIf="user._id === login.id" class="fa fa-pencil-square-o puntero"></i>
+                </h5>
+
+            </div>
+            <div class="card-footer text-muted pie">
+                <nav class="navegacion">
+                    <a class="opcion active" href="#">Biografía</a>
+                    <a class="opcion" href="#">Información</a>
+                    <a class="opcion" href="#">Amigos</a>
+                    <a class="opcion" href="#">Fotos</a>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row info">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fa fa-globe" aria-hidden="true"></i> Presentación</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card publicacion" *ngFor="let post of posts">
+            <div class="card-body">
+                <div class="row cabecera">
+                    <div class="col-md-2 imagen-perfil">
+                        <img class="img-fluid post-img" [src]="post.user_id.img | imagen" alt="">
+                    </div>
+                    <div class="col-md-10 post-who">
+                        <p><a [routerLink]="['/people',post.user_id.slug]">{{ post.user_id.name }} {{ post.user_id.lastname }}</a></p>
+                        <p class="hace">hace una hora</p>
+                    </div>
+                </div>
+                <div class="row cuerpo">
+                    <div class="col-md-12">
+                        <p>{{ post.post }}</p>
+                        <img (click)="openModal(template,'posts',post.img)" *ngIf="post.img" [src]="post.img | imagen:'posts'" class="img-fluid cursor" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted pie">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn btn-light"><i class="fa fa-thumbs-o-up"></i> Me gusta</button>
+
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn btn-light"><i class="fa fa-comment-o"></i> Comentar</button>
+
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn btn-light"><i class="fa fa-share"></i> Compartir</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #template>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-8">
+                <img [src]="img | imagen:type" class="img-fluid" alt="">
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+<ng-template #template2>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <input [hidden]="!show" type="file" accept="image/*" #file (change)="verImagen($event.target.files[0])">
+                <button type="button" (click)="file.click()" class="btn btn-light"><i class="fa fa-picture-o foto"></i>Escoger foto</button>
+                <img *ngIf="imgTemporal" [src]="imgTemporal" class="img-fluid" alt="">
+                <button type="button" (click)="subirArchivo()" *ngIf="imgTemporal" class="btn btn-success">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

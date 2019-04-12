@@ -1,0 +1,56 @@
+.perfil {
+    .tarjeta {
+        width: 100px;
+    }
+    .puntero {
+        cursor: pointer;
+    }
+    .titulo {
+        padding: 30px;
+    }
+    .pie {
+        background: #fff;
+        .navegacion {
+            margin-left: 100px;
+            .opcion {
+                display: inline-block;
+                color: #367DC4;
+                padding: 0 30px;
+                font-weight: bold;
+                text-decoration: none;
+                &.active {
+                    color: #52565e;
+                }
+            }
+        }
+    }
+}
+
+.info {
+    margin-top: 10px;
+    .publicacion {
+        margin-bottom: 10px;
+        .cabecera {
+            margin-bottom: 10px;
+            .imagen-perfil {
+                .post-img {
+                    border-radius: 100%;
+                }
+            }
+            .post-who {
+                .hace {
+                    font-size: .7em;
+                    margin-top: -15px;
+                }
+            }
+        }
+        .cuerpo {
+            .cursor {
+                cursor: pointer;
+            }
+        }
+        .pie {
+            background: #fff;
+        }
+    }
+}
